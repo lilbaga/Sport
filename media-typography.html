@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Task 1 | Адаптивная типографика</title>
+    <meta name="description" content="HandsUp Fitness Club — абонементы, расписание, филиалы и тренеры. Запись на пробную тренировку онлайн.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏋️</text></svg>">
+    <link rel="stylesheet" href="css/media.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav aria-label="Навигация по демо">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="media-typography.html">Task 1: Типографика</a></li>
+                <li><a href="media-cards.html">Task 2: Карточки</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="content">
+        <p><span class="bp" role="status"></span></p>
+        <h1>Адаптивная типографика HandsUp</h1>
+        <p class="lead">Размер шрифта меняется вместе с шириной экрана: на телефоне компактно, на планшете крупнее, на десктопе максимально комфортно для чтения.</p>
+
+        <section class="text">
+            <h2>Почему размер шрифта должен меняться</h2>
+            <p>На узком экране длинные строки крупного текста занимают слишком много места, а на большом мониторе мелкий текст быстро утомляет глаза. Media queries позволяют задать свои размеры для каждого диапазона ширины.</p>
+
+            <h2>Как это устроено в этой странице</h2>
+            <p>Базовые стили написаны для мобильных устройств. Запрос <code>min-width: 576px</code> увеличивает шрифты для планшетов, а <code>min-width: 992px</code> — для десктопов. Значок вверху страницы показывает, какой диапазон сейчас активен.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Разработчики: Shyndaly Bagnyr, Aitzhanova Aigerim, Shamshidin Aruzhan | Группа: SE-2502</p>
+        <p>&copy; 2026 HandsUp Fitness Club.</p>
+    </footer>
+</body>
+</html>

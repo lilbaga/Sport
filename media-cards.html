@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Task 2 | Группа карточек (media queries)</title>
+    <meta name="description" content="HandsUp Fitness Club — абонементы, расписание, филиалы и тренеры. Запись на пробную тренировку онлайн.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏋️</text></svg>">
+    <link rel="stylesheet" href="css/media.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav aria-label="Навигация по демо">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="media-typography.html">Task 1: Типографика</a></li>
+                <li><a href="media-cards.html">Task 2: Карточки</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="content">
+        <p><span class="bp" role="status"></span></p>
+        <h1>Наши тренеры</h1>
+        <p class="lead">Десктоп — три карточки в ряд, планшет — две, телефон — одна под другой. Только CSS media queries, без Bootstrap.</p>
+
+        <section class="cards" aria-label="Тренеры">
+            <article class="card-item">
+                <img src="images/trainer-1.jpg" alt="Тренер Бейсенбек Нурислам">
+                <h2>Бейсенбек Нурислам</h2>
+                <p><strong>Специализация:</strong> Силовой тренинг</p>
+                <ul>
+                        <li>Опыт работы: 6 лет</li>
+                        <li>Мастер спорта по пауэрлифтингу</li>
+                </ul>
+            </article>
+            <article class="card-item">
+                <img src="images/trainer-3.jpg" alt="Тренер Кайратов Аскар">
+                <h2>Кайратов Аскар</h2>
+                <p><strong>Специализация:</strong> Кроссфит и силовой тренинг</p>
+                <ul>
+                        <li>Опыт работы: 5 лет</li>
+                        <li>Сертифицированный тренер по функциональному тренингу</li>
+                </ul>
+            </article>
+            <article class="card-item">
+                <img src="images/trainer-4.jpg" alt="Тренер Жумабекова Алия">
+                <h2>Жумабекова Алия</h2>
+                <p><strong>Специализация:</strong> Пилатес и Стретчинг</p>
+                <ul>
+                        <li>Опыт работы: 3 года</li>
+                        <li>Сертифицированный инструктор по пилатесу</li>
+                </ul>
+            </article>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Разработчики: Shyndaly Bagnyr, Aitzhanova Aigerim, Shamshidin Aruzhan | Группа: SE-2502</p>
+        <p>&copy; 2026 HandsUp Fitness Club.</p>
+    </footer>
+</body>
+</html
