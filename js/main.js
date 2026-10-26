@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
         bgColorToggleBtn.addEventListener('click', function () {
             const randomIndex = Math.floor(Math.random() * themeColors.length);
             document.body.style.backgroundColor = themeColors[randomIndex];
+            this.style.transform = 'scale(1.1)';
+            setTimeout(() => this.style.transform = 'scale(1)', 200);
         });
     }
 
@@ -78,12 +80,118 @@ document.addEventListener('DOMContentLoaded', function () {
                 content.style.maxHeight = '0px';
                 content.style.opacity = '0';
             } else {
-                // Добавляем запас в 30px для правильного отображения отступов текста
                 content.style.maxHeight = (content.scrollHeight + 30) + 'px';
                 content.style.opacity = '1';
             }
         });
     });
+
+    /* ==========================================
+       ASSIGNMENT 5: ADVANCED JS FEATURES
+       ========================================== */
+
+    /* 1. Play Sound Effect using Web Audio API */
+    function playBeepSound() {
+        try {
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            
+            oscillator.type = 'sine';
+            oscillator.frequency.setValueAtTime(587.33, audioCtx.currentTime);
+            gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + 0.15);
+        } catch (e) {
+            console.log('Audio context not supported or blocked', e);
+        }
+    }
+
+    document.querySelectorAll('.btn-primary, .btn-outline-primary').forEach(btn => {
+        btn.addEventListener('click', function() {
+            playBeepSound();
+        });
+    });
+
+    /* 2. Rating Stars Logic using querySelectorAll & Callbacks (trainers.html) */
+    const ratingContainers = document.querySelectorAll('.rating-stars');
+    ratingContainers.forEach(container => {
+        const stars = container.querySelectorAll('.star');
+        stars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                playBeepSound();
+                stars.forEach((s, i) => {
+                    if (i <= index) {
+                        s.classList.add('selected');
+                        s.textContent = '★';
+                    } else {
+                        s.classList.remove('selected');
+                        s.textContent = '☆';
+                    }
+                });
+                const trainerName = container.dataset.trainer || 'тренеру';
+                console.log(`Оценка для ${trainerName}: ${index + 1} из 5`);
+            });
+        });
+    });
+
+    /* 3. Switch Statement for Category Filtering */
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    if (filterButtons.length > 0) {
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const category = this.dataset.category;
+                filterButtons.forEach(btn => btn.classList.remove('active-filter'));
+                this.classList.add('active-filter');
+
+                const trainerCards = document.querySelectorAll('.trainer-card-col');
+                trainerCards.forEach(card => {
+                    const cardCategory = card.dataset.category;
+                    
+                    switch (category) {
+                        case 'all':
+                            card.style.display = 'block';
+                            break;
+                        case 'strength':
+                        case 'yoga':
+                        case 'crossfit':
+                            if (cardCategory === category) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                            break;
+                        default:
+                            card.style.display = 'block';
+                    }
+                });
+            });
+        });
+    }
+
+    /* 4. Arrays, Objects & Higher-Order Functions (forEach, map) */
+    const fitnessTips = [
+        { title: "Пейте воду", desc: "Выпивайте не менее 2 литров чистой воды во время тренировок." },
+        { title: "Разминка обязательна", desc: "Уделяйте 10 минут разминке перед началом работы с весами." },
+        { title: "Сон и восстановление", desc: "Мышцы растут во время отдыха, спите не менее 7-8 часов." }
+    ];
+
+    const tipsContainer = document.getElementById('dynamicTipsContainer');
+    if (tipsContainer) {
+        const tipsHTML = fitnessTips.map(tip => `
+            <div class="col-md-4 mb-3">
+                <div class="p-3 border rounded bg-dark text-light h-100">
+                    <h5 class="text-brand">${tip.title}</h5>
+                    <p class="small text-body-secondary mb-0">${tip.desc}</p>
+                </div>
+            </div>
+        `).join('');
+        tipsContainer.innerHTML = tipsHTML;
+    }
 
     /* Form Validation & Submission (profile.html) */
     const form = document.getElementById('bookingForm');
@@ -103,6 +211,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 '<div class="alert alert-success border-secondary bg-dark text-light" role="alert">' +
                 'Спасибо, ' + name + '! Заявка в филиал ' + branchName + ' успешно отправлена.' +
                 '</div>';
+            playBeepSound();
             form.reset();
             form.classList.remove('was-validated');
         });
@@ -112,4 +221,4 @@ document.addEventListener('DOMContentLoaded', function () {
             form.classList.remove('was-validated');
         });
     }
-}); 
+});

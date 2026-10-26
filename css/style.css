@@ -145,3 +145,40 @@ html[data-bs-theme="dark"] .carousel .carousel-indicators [data-bs-target] { bac
 .custom-accordion-header.active + .custom-accordion-content {
     padding: 14px 16px; /* Текст полностью виден, отступы сверху и снизу комфортные */
 }
+
+/* ---------- Assignment 5 Additions: Rating, Animations & Filters ---------- */
+.rating-stars {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #6c757d;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.rating-stars .star {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.rating-stars .star:hover {
+    transform: scale(1.3);
+}
+
+.rating-stars .star.selected {
+    color: #ffc107; /* Желтый цвет выбранной звезды */
+}
+
+/* Анимация при наведении на карточки */
+.card-item, .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(139, 30, 139, 0.3);
+}
+
+/* Стили для кнопок фильтрации */
+.filter-btn.active-filter {
+    background-color: var(--pink, #d81b60) !important;
+    border-color: var(--pink, #d81b60) !important;
+}

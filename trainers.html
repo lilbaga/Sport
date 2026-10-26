@@ -37,9 +37,17 @@
         <h1 class="text-center text-brand mb-2">Наша команда тренеров</h1>
         <p class="text-center text-body-secondary mb-4">Профессиональные наставники помогут вам достичь результатов!</p>
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 mb-4">
+        <!-- Кнопки фильтрации с использованием Switch Statements в JS -->
+        <div class="d-flex justify-content-center gap-2 mb-4 flex-wrap">
+            <button class="btn btn-outline-light btn-sm filter-btn active-filter" data-category="all">Все тренеры</button>
+            <button class="btn btn-outline-light btn-sm filter-btn" data-category="strength">Силовой тренинг</button>
+            <button class="btn btn-outline-light btn-sm filter-btn" data-category="crossfit">Кроссфит</button>
+            <button class="btn btn-outline-light btn-sm filter-btn" data-category="yoga">Йога и Пилатес</button>
+        </div>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 mb-4" id="trainersContainer">
             <!-- Trainer 1 -->
-            <div class="col">
+            <div class="col trainer-card-col" data-category="strength">
                 <article class="card h-100 text-center bg-dark border-secondary">
                     <img src="images/trainer-1.jpg" class="card-img-top trainer-photo" alt="Тренер Бейсенбек Нурислам">
                     <div class="card-body">
@@ -50,7 +58,14 @@
                             <li>Мастер спорта по пауэрлифтингу</li>
                         </ul>
                         
-                        <!-- TASK 2: Custom JavaScript Accordion for extra trainer info -->
+                        <!-- Интерактивный рейтинг звездочками (DOM & querySelectorAll) -->
+                        <div class="mb-3">
+                            <span class="small text-body-secondary d-block mb-1">Оценить тренера:</span>
+                            <div class="rating-stars" data-trainer="Нурислам Бейсенбек">
+                                <span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span>
+                            </div>
+                        </div>
+
                         <div class="mb-2">
                             <div class="custom-accordion-header py-1 px-2 small text-center">Биография</div>
                             <div class="custom-accordion-content small text-body-secondary p-2">
@@ -65,7 +80,7 @@
             </div>
 
             <!-- Trainer 2 -->
-            <div class="col">
+            <div class="col trainer-card-col" data-category="crossfit">
                 <article class="card h-100 text-center bg-dark border-secondary">
                     <img src="images/trainer-3.jpg" class="card-img-top trainer-photo" alt="Тренер Кайратов Аскар">
                     <div class="card-body">
@@ -75,6 +90,13 @@
                             <li>Опыт работы: 5 лет</li>
                             <li>Сертифицированный тренер</li>
                         </ul>
+
+                        <div class="mb-3">
+                            <span class="small text-body-secondary d-block mb-1">Оценить тренера:</span>
+                            <div class="rating-stars" data-trainer="Аскар Кайратов">
+                                <span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span>
+                            </div>
+                        </div>
 
                         <div class="mb-2">
                             <div class="custom-accordion-header py-1 px-2 small text-center">Биография</div>
@@ -90,7 +112,7 @@
             </div>
 
             <!-- Trainer 3 -->
-            <div class="col">
+            <div class="col trainer-card-col" data-category="yoga">
                 <article class="card h-100 text-center bg-dark border-secondary">
                     <img src="images/trainer-4.jpg" class="card-img-top trainer-photo" alt="Тренер Жумабекова Алия">
                     <div class="card-body">
@@ -100,6 +122,13 @@
                             <li>Опыт работы: 3 года</li>
                             <li>Инструктор по пилатесу</li>
                         </ul>
+
+                        <div class="mb-3">
+                            <span class="small text-body-secondary d-block mb-1">Оценить тренера:</span>
+                            <div class="rating-stars" data-trainer="Алия Жумабекова">
+                                <span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span>
+                            </div>
+                        </div>
 
                         <div class="mb-2">
                             <div class="custom-accordion-header py-1 px-2 small text-center">Биография</div>
@@ -115,7 +144,7 @@
             </div>
 
             <!-- Trainer 4 -->
-            <div class="col">
+            <div class="col trainer-card-col" data-category="yoga">
                 <article class="card h-100 text-center bg-dark border-secondary">
                     <img src="images/trainer-2.jpg" class="card-img-top trainer-photo" alt="Тренер Турсынбаева Алина">
                     <div class="card-body">
@@ -125,6 +154,13 @@
                             <li>Опыт работы: 4 года</li>
                             <li>Инструктор хатха-йоги</li>
                         </ul>
+
+                        <div class="mb-3">
+                            <span class="small text-body-secondary d-block mb-1">Оценить тренера:</span>
+                            <div class="rating-stars" data-trainer="Алина Турсынбаева">
+                                <span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span>
+                            </div>
+                        </div>
 
                         <div class="mb-2">
                             <div class="custom-accordion-header py-1 px-2 small text-center">Биография</div>
@@ -139,6 +175,15 @@
                 </article>
             </div>
         </div>
+
+        <!-- Демонстрация массивов и методов (Higher-Order Functions / map) -->
+        <section class="mt-5">
+            <h2 class="h4 text-center mb-3">Полезные советы от нашей команды</h2>
+            <div class="row" id="dynamicTipsContainer">
+                <!-- Динамически заполняется через JS (массивы + map) -->
+            </div>
+        </section>
+
     </main>
 
     <footer class="bg-dark border-top mt-auto py-4 text-center text-body-secondary small">
